@@ -1,0 +1,142 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>?˵??Ч</title>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/interface.js"></script>
+<link href="style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+function myself(){
+	document.getElementById("myself").style.display="block";
+	document.getElementById("taste").style.display="none";
+	document.getElementById("study").style.display="none";
+}
+function study(){
+	document.getElementById("study").style.display="block";
+	document.getElementById("myself").style.display="none";
+	document.getElementById("taste").style.display="none";
+}
+function taste(){
+	document.getElementById("taste").style.display="block";
+	document.getElementById("myself").style.display="none";
+	document.getElementById("study").style.display="none";
+}
+</script>
+<style>
+.center {text-align: center}
+.section {
+	display:none;
+    padding:10px;	 	 
+}
+#header {
+    background-color:black;
+    color:white;
+    text-align:center;
+    padding:5px;
+}
+#nav {
+    line-height:30px;
+    background-color:#eeeeee;
+    height:80%;
+    float:left;
+    padding:5px;	      
+}
+
+
+
+}
+
+</style>
+
+
+</head>
+<body>
+
+
+
+<div class="dock" id="dock2">
+  <div class="dock-container2">
+	  <a class="dock-item2" href=""><img src="http://www.18sucai.com/Upfile/Upjs/201101/146/images/home.png" alt="home" /><span>Home</span></a> 
+	  <a class="dock-item2" href="http://music.baidu.com/"><img src="http://www.18sucai.com/Upfile/Upjs/201101/146/images/music.png" alt="music" /><span>Music</span></a> 
+	  <a class="dock-item2" href="http://video.baidu.com/"><img src="http://www.18sucai.com/Upfile/Upjs/201101/146/images/video.png" alt="video" /><span>Video</span></a> 
+	  <a class="dock-item2" href=""><img src="http://www.18sucai.com/Upfile/Upjs/201101/146/images/portfolio.png" alt="portfolio" /><span>Portfolio</span></a> 
+  </div>
+</div>
+<div id="header">
+<h1>个人中心</h1>
+</div>
+
+<div id="nav">
+<a onClick="myself()">个人简介</a><br>
+<a onClick="study()">学习历程</a><br>
+<a onClick="taste()">兴趣爱好</a><br>
+</div>
+
+<div id="myself" class="section">
+<h2 class="center">个人简介</h2>
+<p>
+
+</p>
+<p>
+
+</p>
+</div>
+
+<div id="study" class="section">
+<h2 class="center">学习历程</h2>
+<p>
+
+</p>
+<p>
+
+</p>
+</div>
+
+<div id="taste" class="section">
+<h2 class="center">兴趣爱好</h2>
+<p>
+
+</p>
+<p>
+
+</p>
+</div>
+
+<p>
+  <!--dock menu JS options -->
+  <script type="text/javascript">
+	
+	$(document).ready(
+		function()
+		{
+			$('#dock').Fisheye(
+				{
+					maxWidth: 50,
+					items: 'a',
+					itemsText: 'span',
+					container: '.dock-container',
+					itemWidth: 40,
+					proximity: 90,
+					halign : 'center'
+				}
+			)
+			$('#dock2').Fisheye(
+				{
+					maxWidth: 60,
+					items: 'a',
+					itemsText: 'span',
+					container: '.dock-container2',
+					itemWidth: 40,
+					proximity: 80,
+					alignment : 'left',
+					valign: 'bottom',
+					halign : 'center'
+				}
+			)
+		}
+	);
+
+</script>
+</p>
+</body>
+</html>
