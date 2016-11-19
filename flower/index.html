@@ -1,0 +1,142 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+
+<style type="text/css">
+@font-face {
+	font-family: digit;
+	src: url('digital-7_mono.ttf') format("truetype");
+}
+#ss{
+	position:absolute;
+	font-size: 18px;
+	margin-top: 50px;
+	margin-left: 50px;
+	float: left;
+}
+</style>
+
+<link href="css/default.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/garden.js"></script>
+<script type="text/javascript" src="js/functions.js"></script>
+
+</head>
+
+<body>
+<div id = "ss">
+			<form>
+				你们相识于:<input style="width: 36px;" type="text" id="year">年<input style="width: 18px;" type="text" id="month">月<input style="width: 18px;" type="text" id="day">日
+				<input type="button" onclick="ok()" value="确定">
+		 	</form>
+		 	<div>
+				<div id="total"></div><span id="time"></span>
+			</div>
+			<p id="Valentine" style="color:red"></p>
+			<p id="mom" style="color:red"></p>
+			<p id="qixi" style="color:red"></p>
+</div>
+<div id="mainDiv">
+	<div id="content">
+		<div id="loveHeart">
+			<canvas id="garden"></canvas>
+			<div id="words">
+				<div id="messages">
+					执子之手----------------
+				</div>
+				<div id="loveu">
+					----------------与子偕老<br/>
+					<div class="signature">-------直到永远</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+var now = new Date();
+var nowtime = now.getTime();
+var index=0;
+var Valentine= new Date(2017,2,14);
+var qixi= new Date(2017,8,28);
+var mom= new Date(2017,5,14);
+var word1="还有";
+word1+=parseInt((Valentine.getTime()-nowtime)/24/60/60/1000)+"天";
+word1+="情人节";
+var word2="还有";
+word2+=parseInt((mom.getTime()-nowtime)/24/60/60/1000)+"天";
+word2+="母亲节";
+var word3="还有";
+word3+=parseInt((qixi.getTime()-nowtime)/24/60/60/1000)+"天";
+word3+="七夕";
+function type(){
+    document.getElementById("Valentine").innerText = word1.substring(0,index++);
+    document.getElementById("mom").innerText = word2.substring(0,index);
+    document.getElementById("qixi").innerText = word3.substring(0,index);
+}
+setInterval(type, 100);
+	var days;
+		function ok(){
+			var year = document.getElementById('year').value;
+            var month =  document.getElementById('month').value-1;
+			var day =  document.getElementById('day').value;
+            var bngDate = new Date(year,month,day);
+ 			var now = new Date();
+ 			year = now.getFullYear();
+ 			month = now.getMonth();
+ 			day = now.getDate();
+            var endDate =new Date(year,month,day);
+            days = (endDate.getTime()-bngDate.getTime())/24/60/60/1000;
+            document.getElementById('total').innerHTML = "你们相识了"+days+"天";
+			showtime();
+		}
+		function showtime() {
+			var now = new Date();
+			var hours = now.getHours() + days*24;
+			var minutes = now.getMinutes() + hours*60;
+			var seconds = now.getSeconds() + minutes*60;
+			var timeValue = "相当于" +hours+"个小时<br>";
+			timeValue +=  minutes + "分钟<br>";
+			timeValue +=  seconds +"秒";
+			document.getElementById('time').innerHTML = timeValue;
+			setTimeout("showtime()",1000);
+		}
+			var offsetX = $("#loveHeart").width() / 2;
+			var offsetY = $("#loveHeart").height() / 2 - 55;
+			var together = new Date();
+			together.setFullYear(year, month, day);
+			together.setHours(0);
+			together.setMinutes(0);
+			together.setSeconds(0);
+			together.setMilliseconds(0);
+
+			if (!document.createElement('canvas').getContext) {
+				var msg = document.createElement("div");
+				msg.id = "errorMsg";
+				msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+"; 
+				document.body.appendChild(msg);
+				$("#code").css("display", "none")
+				$("#copyright").css("position", "absolute");
+				$("#copyright").css("bottom", "10px");
+				document.execCommand("stop");
+			} else {
+				setTimeout(function () {
+					startHeartAnimation();
+				}, 5000);
+
+				timeElapse(together);
+				setInterval(function () {
+					timeElapse(together);
+				}, 500);
+
+				adjustCodePosition();
+				$("#code").typewriter();
+			}
+
+</script>
+<div style="text-align:center;clear:both">
+</div>
+</body>
+</html>
