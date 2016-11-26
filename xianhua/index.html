@@ -1,0 +1,233 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+
+<style type="text/css">
+@font-face {
+	font-family: digit;
+	src: url('digital-7_mono.ttf') format("truetype");
+}
+
+</style>
+
+<link href="css/default.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/garden.js"></script>
+<script type="text/javascript" src="js/functions.js"></script>
+<script type="text/javascript" src="js/phaser.min.js"></script>
+<script type="text/javascript" src="js/cc.js"></script>
+
+	<style type="text/css">
+	canvas {
+        margin: 0 auto;
+    }
+	.ss{
+		position: relative;
+		text-align:center;
+		height: 100%;
+		font-size: 18px;
+	}
+	#main{
+		height: 100%;
+		width: 100%;
+		position: absolute;
+		top: 0px;
+		overflow:hidden;
+	}
+	.page{
+		position: relative;
+		text-align:center;
+		line-height:50px;
+		height: 100%;
+		width: 100%;
+	}
+	.last{
+		text-align:center;
+		line-height:500px;
+		height: 100%;
+		width: 100%;
+		overflow:hidden;
+	}
+	.rotate{
+		transform: rotate(87deg);
+	}
+	</style>
+</head>
+<body>
+
+	<div id="mainDiv">
+		<div id="content">
+			<div id="loveHeart">
+				<canvas id="garden"></canvas>
+			</div>
+		</div>
+	</div>
+	<div id="main">
+		<div class="page">
+			<h1>嘿，你的鲜花</h1>
+			<h3>IsYou鲜花坊</h3>
+			<div style="position:absolute; left:45%;bottom:100px;"><img style="height: 30px; width: 150px;" src="down.gif" onclick="cc()" class="rotate"></div>
+		</div>
+		<div class="page">
+			<h1>嘿，帮我把花扔给她好吗？</h1>
+			<div id="game_div"></div>
+			<div style="position:absolute; left:45%;bottom:100px;"><img style="height: 30px; width: 150px;" src="down.gif" onclick="cc();begin()" class="rotate"></div>
+		</div>
+		<div id="page3" class="ss">
+			<div style="position:absolute; left:45%;bottom:100px;"><img style="height: 30px; width: 150px;" src="down.gif" onclick="cc();begin2()" class="rotate"></div>
+			<form>
+				你们相识于:<input style="width: 50px;" type="text" id="year">年<input style="width: 25px;" type="text" id="month">月<input style="width: 25px;" type="text" id="day">日
+				<input type="button" onclick="ok()" value="确定">
+		 	</form>
+		 	<div>
+				<div id="total"></div><span id="time"></span>
+			</div>
+			<p id="Valentine" style="color:red"></p>
+			<p id="qixi" style="color:red"></p>
+		</div>
+		<div id="page4" class="page">
+			<div style="position:absolute; left:45%;bottom:100px;"><img style="height: 30px; width: 150px;" src="down.gif" onclick="cc()" class="rotate"></div>
+			<h1 id="anni"></h1>
+			<h1 id="d520"></h1>
+			<h1 id="d1314"></h1>
+		</div>
+		<div id="page5" class="last" onclick="clo()">
+		<h1>等到那一天，你若还能记得今天，还能回到这里完结约定，将会得到神秘奖励！</h1>
+		</div>
+	</div>
+
+
+	<script type="text/javascript">
+		var dat=0,total=0;
+		var MyMar;
+		function clo(){
+			window.close();
+		}
+		function cc(){
+			MyMar=setInterval(Mar,20);
+		}
+		function Mar(){
+			if(total<main.offsetHeight/2){
+				dat++;
+			}
+			if(total>main.offsetHeight/2){
+				if(dat>1)dat--;
+			}
+			if(total>=main.offsetHeight){
+				dat=0;
+				total=0;
+				clearInterval(MyMar);
+			}
+			total+=dat;
+			main.scrollTop+=dat;
+		}
+	</script>
+	<script type="text/javascript">
+	var year,month,day,bngDate;
+	var now = new Date();
+var nowtime = now.getTime();
+var index=0;
+var Valentine= new Date(2017,2,14);
+var qixi= new Date(2017,8,28);
+var word1="还有";
+word1+=parseInt((Valentine.getTime()-nowtime)/24/60/60/1000)+"天";
+word1+="情人节";
+var word3="还有";
+word3+=parseInt((qixi.getTime()-nowtime)/24/60/60/1000)+"天";
+word3+="七夕";
+
+var anni,anni_word,d520,d520_word,d1314,d1314word;
+
+function type(){
+    document.getElementById("Valentine").innerText = word1.substring(0,index++);
+    document.getElementById("qixi").innerText = word3.substring(0,index);
+}
+var index2=0;
+function type2(){
+    document.getElementById("anni").innerText = anni_word.substring(0,index2++);
+    document.getElementById("d520").innerText = d520_word.substring(0,index2);
+    document.getElementById("d1314").innerText = d1314_word.substring(0,index2);
+}
+function begin(){setInterval(type, 200);}
+function begin2(){
+	anni_word="还有";
+	anni_word+=parseInt((anni.getTime()-nowtime)/24/60/60/1000)%365+"天就是";
+	anni_word+=(2017-year)+"周年纪念日，是不是该纪念一下？";
+	if(d520>=0){
+		d520_word = "还有"+d520;
+		d520_word+="就是你们相识520天的纪念日,送TA花来表达你的爱意？";
+	}
+	if(d1314>=0){
+		d1314_word = "还有"+d1314;
+		d1314_word+="就是你们相识1314天的纪念日,送TA花来表达你的爱意？";
+	}
+	setInterval(type2, 200);
+}
+	var days;
+		function ok(){
+			year = document.getElementById('year').value;
+            month =  document.getElementById('month').value-1;
+			day =  document.getElementById('day').value;
+			anni = new Date(2017,month,day);
+            bngDate = new Date(year,month,day);
+ 			var now = new Date();
+ 			year = now.getFullYear();
+ 			month = now.getMonth();
+ 			day = now.getDate();
+            var endDate =new Date(year,month,day);
+            days = (endDate.getTime()-bngDate.getTime())/24/60/60/1000;
+ 			d520 = 520 - days;
+ 			d1314 = 1314 - days;
+            document.getElementById('total').innerHTML = "你们相识了"+days+"天";
+			showtime();
+		}
+		function showtime() {
+			var now = new Date();
+			var hours = now.getHours() + days*24;
+			var minutes = now.getMinutes() + hours*60;
+			var seconds = now.getSeconds() + minutes*60;
+			var timeValue = "相当于" +hours+"个小时<br>";
+			timeValue +=  minutes + "分钟<br>";
+			timeValue +=  seconds +"秒";
+			document.getElementById('time').innerHTML = timeValue;
+			setTimeout("showtime()",1000);
+		}
+			var offsetX = $("#loveHeart").width() / 2;
+			var offsetY = $("#loveHeart").height() / 2 - 55;
+			var together = new Date();
+			together.setFullYear(2016, 10, 10);
+			together.setHours(0);
+			together.setMinutes(0);
+			together.setSeconds(0);
+			together.setMilliseconds(0);
+
+			if (!document.createElement('canvas').getContext) {
+				var msg = document.createElement("div");
+				msg.id = "errorMsg";
+				msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+"; 
+				document.body.appendChild(msg);
+				$("#code").css("display", "none")
+				$("#copyright").css("position", "absolute");
+				$("#copyright").css("bottom", "10px");
+				document.execCommand("stop");
+			} else {
+				setTimeout(function () {
+					startHeartAnimation();
+				}, 5000);
+
+				timeElapse(together);
+				setInterval(function () {
+					timeElapse(together);
+				}, 500);
+
+				adjustCodePosition();
+				$("#code").typewriter();
+			}
+
+</script>
+<div style="text-align:center;clear:both">
+</div>
+</body>
+</html>
