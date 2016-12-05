@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<style type="text/css">
+	* { padding: 0; margin: 0; border: 0; }
+	html{
+		font-size: 200%;
+	}
+	body{ background-color:#ffe}
+	#main{
+		position: absolute;
+		height: 100%;
+		width: 100%;
+	}
+	#header{
+		text-align: center;
+		font-size: 2rem;
+	}
+	.hua{
+		position: relative;
+		height: 3.5rem;
+		border:#dadada solid 2px;
+	}
+	.hua img{
+		margin: 10px 10px auto;
+		float: left;
+		height: 3rem;
+	}
+	.hua_name{
+		float: left;
+		margin-left: 2%;
+	}
+	.name{
+		font-size: 1.8rem;
+		color: #f95780;
+	}
+	.ftype{
+		text-align: center;
+		line-height: 50px;
+		font-size: 1.2rem;
+		color: #554433;
+	}
+	.price{
+		color: #f95757;
+	}
+	</style>
+</head>
+<body>
+	<div id="main">
+		<div id="header">
+			IS YOU
+		</div>
+		<div class="hua">
+			<img src="flower\1479174426\byg\1.png" class="hua_img">
+			<div class="hua_name">
+				<p class="name" >白月光</p>
+				<p class="ename" style="display: none;">byg</p>
+				<p class="price">¥88</p>
+			</div>
+		</div>
+		<div class="hua">
+			<img src="flower\1479174426\cc\1.png" class="hua_img">
+			<div class="hua_name">
+				<p class="name">初春</p>
+				<p class="ename" style="display: none;">cc</p>
+				<p class="price">¥175</p>
+			</div>
+		</div>
+		<div class="hua">
+			<img src="flower\1479174426\cy\1.png" class="hua_img">
+			<div class="hua_name">
+				<p class="name">寸阴</p>
+				<p class="ename" style="display: none;">cy</p>
+				<p class="price">¥200</p>
+			</div>
+		</div>
+		<div class="hua">
+			<img src="flower\1479174426\fcj\1.png" class="hua_img">
+			<div class="hua_name">
+				<p class="name">方寸间</p>
+				<p class="ename" style="display: none;">fcj</p>
+				<p class="price">¥99</p>
+			</div>
+		</div>
+		<div class="hua">
+			<img src="flower\1479174426\ftz\1.png" class="hua_img">
+			<div class="hua_name">
+				<p class="name" >粉团子</p>
+				<p class="ename" style="display: none;">ftz</p>
+				<p class="price">¥88</p>
+			</div>
+		</div>
+		<div class="hua">
+			<img src="flower\1479174426\l\1.png" class="hua_img">
+			<div class="hua_name">
+				<p class="name">瀧</p>
+				<p class="ename" style="display: none;">l</p>
+				<p class="price">¥118</p>
+			</div>
+		</div>
+		<div class="hua">
+			<img src="flower\1479174426\sy\1.png" class="hua_img">
+			<div class="hua_name">
+				<p class="name">三葉</p>
+				<p class="ename" style="display: none;">sy</p>
+				<p class="price">¥xx</p>
+			</div>
+		</div>
+		<div class="hua">
+			<img src="flower\1479174426\sgj\1.png" class="hua_img">
+			<div class="hua_name">
+				<p class="name">时光机</p>
+				<p class="ename" style="display: none;">sgj</p>
+				<p class="price">¥88</p>
+			</div>
+		</div>
+		<div class="hua">
+			<img src="flower\1479174426\x\1.png" class="hua_img">
+			<div class="hua_name">
+				<p class="name" >雪</p>
+				<p class="ename" style="display: none;">x</p>
+				<p class="price">¥xx</p>
+			</div>
+		</div>
+		<div class="hua">
+			<img src="flower\1479174426\zsz\1.png" class="hua_img">
+			<div class="hua_name">
+				<p class="name">朱砂痣</p>
+				<p class="ename" style="display: none;">zsz</p>
+				<p class="price">¥150</p>
+			</div>
+		</div>
+	</div>
+<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript">
+// window.onload=function(){ 
+// 		var h=document.querySelectorAll(".hua");
+// 		for(var i=0;i<h.length;i++){
+// 			h[i].addEventListener('click',function(){
+// 				window.location.href="flower/flower.html";
+// 			})
+// 		}
+// }
+$(function(){ 
+
+$(".hua").click(function(){
+	var t=$(this).children(".hua_name").find('p[class*=ename]');
+	window.location.href="flower/"+t.text()+".html";
+	})
+ 
+
+})
+		 
+
+</script>
+</body>
+</html>

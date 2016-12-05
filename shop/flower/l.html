@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<meta name="viewport" content="width=device-width">
+	<title>xx</title>
+	<link rel="stylesheet" type="text/css" href="1479174426/style.css">
+	<script type="text/javascript" src="1479174426/jquery.min.js"></script>
+	<script type="text/javascript" src="1479174426/vmc.slider.full.min.js"></script>
+<style type="text/css">
+	.name{
+		font-size: 1.8rem;
+		color: #f95780;
+	}
+	.price{
+		color: #f95757;
+	}
+	#introduce{
+		text-align: center;
+	}
+	.flower_color img{
+		width: 10rem;
+		height: 8rem;
+	}
+	.show{
+		width: 500px;
+		height: 300px;
+	}
+	#main{
+		position: absolute;
+		width: 550px;
+	}
+
+	.lt-rt input{  width:1.5rem; height:1.5rem; font-size:1rem; border:1px solid #e5e5e5; text-align:center; color:#A1A09C; background-color:#fff;}
+	.lt-rt input.result{ border:none; color:#FF5151;}
+</style>
+</head>
+<body>	
+		
+		<div id="main">
+			<div class="content" style="width:500px;height:300px;margin:30px auto;overflow:hidden;">
+				<div id="slider">
+					<a href="#"><img class="show" src="1479174426/l/1.png"/></a>
+					<a href="#"><img class="show" src="1479174426/l/2.png"/></a>
+					<a href="#"><img class="show" src="1479174426/l/3.png"/></a>
+					<a href="#"><img class="show" src="1479174426/l/4.png"/></a>
+					<a href="#"><img class="show" src="1479174426/l/5.png"/></a>
+					<a href="#"><img class="show" src="1479174426/l/6.png"/></a>
+				</div>
+			</div>
+			<div id="introduce">
+				<p class="name">瀧<p>
+				<p class="price">¥118</p>
+				<div style="text-align: left;margin:30px 30px 30px 30px;color: #554433">
+					<span>
+						&nbsp&nbsp你看这满到溢出来的星星，像不像爱情？
+					</span>
+				</div>
+				<div class="lt-rt">
+		        	<input type="button" class="minus"  value="-">
+		        	<input type="text" class="result" value="0">
+		        	<input type="button" class="add" value="+">
+		        	<input type="button" style="width: 4rem;" value="购买">
+		        </div>
+		        <br><br>展示图<br><br>
+		        <div class="flower_color">
+					<a href="#"><img src="1479174426/l/1.png"/></a>
+					<a href="#"><img src="1479174426/l/2.png"/></a>
+					<a href="#"><img src="1479174426/l/3.png"/></a>
+					<a href="#"><img src="1479174426/l/4.png"/></a>
+					<a href="#"><img src="1479174426/l/5.png"/></a>
+					<a href="#"><img src="1479174426/l/6.png"/></a>
+				</div>
+			</div>
+		</div>
+			
+		<!-- </div> -->
+		
+	
+	
+
+	<script type="text/javascript">
+	$(function(){ 
+
+		$(".add").click(function(){
+			var t=$(this).parent().find('input[class*=result]'); 
+			t.val(parseInt(t.val())+1);
+		});
+		 
+		$(".minus").click(function(){ 
+			var t=$(this).parent().find('input[class*=result]'); 
+			t.val(parseInt(t.val())-1);
+			if(parseInt(t.val())<0){ 
+				t.val(0);
+			} 
+
+		});
+	});
+		$(function() {
+			$('#slider').vmcSlider({
+				width: 500,
+				height: 300,
+				gridCol: 10,
+				gridRow: 5,
+				gridVertical: 20,
+				gridHorizontal: 10,
+				autoPlay: true,
+				ascending: true,
+				effects: [
+					'fade', 'fadeLeft', 'fadeRight', 'fadeTop', 'fadeBottom', 'fadeTopLeft', 'fadeBottomRight',
+					'blindsLeft', 'blindsRight', 'blindsTop', 'blindsBottom', 'blindsTopLeft', 'blindsBottomRight',
+					'curtainLeft', 'curtainRight', 'interlaceLeft', 'interlaceRight', 'mosaic', 'bomb', 'fumes'
+				],
+				ie6Tidy: false,
+				random: false,
+				duration: 2000,
+				speed: 900
+			});
+		});
+	</script>
+</body>
+</html> 
