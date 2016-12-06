@@ -31,6 +31,20 @@
 		position: absolute;
 		width: 550px;
 	}
+	.er{
+		width: 300px;
+		float: left;
+		text-align: center;
+	}
+	.mai{
+		position: relative;
+		top:100px;
+		float: right;
+		margin: 0px 50px 0px 0px;
+	}
+	.back{
+		width:8rem; height:1.5rem; font-size:1rem; border:1px solid #e5e5e5; text-align:center; color:#A1A09C; background-color:#fff;
+	}
 
 	.lt-rt input{  width:1.5rem; height:1.5rem; font-size:1rem; border:1px solid #e5e5e5; text-align:center; color:#A1A09C; background-color:#fff;}
 	.lt-rt input.result{ border:none; color:#FF5151;}
@@ -41,21 +55,27 @@
 		<div id="main">
 			<div class="content" style="width:500px;height:300px;margin:30px auto;overflow:hidden;">
 				<div id="slider">
-					<a href="#"><img class="show" src="1479174426/sy/1.png"/></a>
-					<a href="#"><img class="show" src="1479174426/sy/2.png"/></a>
-					<a href="#"><img class="show" src="1479174426/sy/3.png"/></a>
-					<a href="#"><img class="show" src="1479174426/sy/4.png"/></a>
-					<a href="#"><img class="show" src="1479174426/sy/5.png"/></a>
-					<a href="#"><img class="show" src="1479174426/sy/6.png"/></a>
+					<a href="#"><img class="show" src="1479174426/cy/1.png"/></a>
+					<a href="#"><img class="show" src="1479174426/cy/2.png"/></a>
+					<a href="#"><img class="show" src="1479174426/cy/3.png"/></a>
+					<a href="#"><img class="show" src="1479174426/cy/4.png"/></a>
+					<a href="#"><img class="show" src="1479174426/cy/5.png"/></a>
+					<a href="#"><img class="show" src="1479174426/cy/6.png"/></a>
 				</div>
 			</div>
 			<div id="introduce">
-				<p class="name">三葉<p>
+				<p class="name">寸阴<p>
 				<p class="price">¥200</p>
 				<div style="text-align: left;margin:30px 30px 30px 30px;color: #554433">
-					<span>
+					<p>
 						&nbsp&nbsp林深时见鹿，海蓝时见鲸，梦醒时见你。
-					</span>
+					</p>
+					<p>
+						提前三天与客服联系
+					</p>
+					<p>
+						组成：玫瑰、绣球、洋桔梗、盆栽的枝叶、配花
+					</p>
 				</div>
 				<div class="lt-rt">
 		        	<input type="button" class="minus"  value="-">
@@ -65,21 +85,38 @@
 		        </div>
 		        <br><br>展示图<br><br>
 		        <div class="flower_color">
-					<a href="#"><img src="1479174426/sy/1.png"/></a>
-					<a href="#"><img src="1479174426/sy/2.png"/></a>
-					<a href="#"><img src="1479174426/sy/3.png"/></a>
-					<a href="#"><img src="1479174426/sy/4.png"/></a>
-					<a href="#"><img src="1479174426/sy/5.png"/></a>
-					<a href="#"><img src="1479174426/sy/6.png"/></a>
+					<a href="#"><img src="1479174426/cy/1.png"/></a>
+					<a href="#"><img src="1479174426/cy/2.png"/></a>
+					<a href="#"><img src="1479174426/cy/3.png"/></a>
+					<a href="#"><img src="1479174426/cy/4.png"/></a>
+					<a href="#"><img src="1479174426/cy/5.png"/></a>
+					<a href="#"><img src="1479174426/cy/6.png"/></a>
 				</div>
 			</div>
+			<div style="width: 550px;height: 530px;">
+				<div class="er">
+					<p>客服<p>
+					<img style="width: 200px;height: 200px;" src="1479174426/01.png"/>
+					<img style="width: 200px;height: 200px;" src="1479174426/02.png"/>
+					<p>联系方式:13260650149<p>
+				</div>
+				<div class="mai">
+					<img style="width: 150px;height: 300px;" src="1479174426/mai.png"/>
+				</div>
+			</div>
+			<br>
+			<div style="text-align: center;">
+				<input class="back" type="button" value="返回" onclick="back()"></input>
+			</div>
+			<br><br><br>
 		</div>
 			
 		<!-- </div> -->
-		
-	
 
 	<script type="text/javascript">
+	function back(){
+		window.location.href="../index.html";
+	}
 	$(function(){ 
 
 		$(".add").click(function(){
