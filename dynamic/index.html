@@ -1,0 +1,111 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<title>华东小玩意儿</title>
+</head>
+<body>
+
+<canvas id="myCanvas" width="800" height="400" style="border:1px solid #c3c3c3;">
+Your browser does not support the canvas element.
+</canvas><br>
+<input id="word" type="text" style="width: 700px"></input>
+<input type="button" value="begin" onclick="begin()"></input>
+<br><div id="dd">词与词之间用空格隔开哟（例：禹华东 禹华东）</div>
+<script type="text/javascript">
+var words,index=0;
+var c=document.getElementById("myCanvas");
+var ctx=c.getContext("2d");
+var i = 0,w=800,h=400;
+var num=500;
+var x = new Array();
+var y = new Array();
+var x0 = new Array();
+var y0 = new Array();
+var xx=Math.ceil(Math.random()*w)-1;
+var yy=Math.ceil(Math.random()*h)-1;
+ctx.font="100px Verdana";
+ctx.fillText("禹华东制作",10,200);
+var imagedata = ctx.getImageData(0, 0, w, h);
+var data=imagedata.data;
+
+i=0;
+while(i<num){
+	x0[i]=Math.ceil(Math.random()*w)-1;
+	y0[i]=Math.ceil(Math.random()*h)-1;
+	i++;
+}
+i=0;
+while(i<num){
+	while(true){
+		xx=Math.ceil(Math.random()*w)-1;
+		yy=Math.ceil(Math.random()*h)-1;
+		if(data[3+4*xx+4*w*yy]>0)break;
+	}
+	x[i]=xx;
+	y[i]=yy;
+	i++;
+}
+
+ctx.fillStyle="red";
+
+i=0;
+while(i<num){
+	ctx.beginPath();
+	ctx.arc(x0[i],y0[i],5,0,Math.PI*2,true);
+
+	ctx.fill();
+	i++;
+}
+
+function begin(){
+	words = word.value.split(" ");
+	setInterval(move, 10);
+}
+function move(){
+	i=0;
+	while(i<num){
+		x0[i]+=(x[i]-x0[i])/100;
+		y0[i]+=(y[i]-y0[i])/100;
+		i++;
+	}
+
+	ctx.fillStyle="#FFFFFF";
+	ctx.fillRect(0,0,w,h);
+	ctx.fillStyle="red";
+	i=0;
+	while(i<num){
+		ctx.beginPath();
+		ctx.arc(x0[i],y0[i],5,0,Math.PI*2,true);
+		ctx.fill();
+		i++;
+	}
+	// dd.innerHTML=Math.abs(x[0]-x0[0]);
+	if(Math.abs(x[0]-x0[0])<0.8&&index<words.length){
+		getxy(index++);
+	}
+}
+function getxy(index){
+	ctx.fillStyle="#FFFFFF";
+	ctx.fillRect(0,0,w,h);
+	ctx.fillStyle="#FEFEFE";
+	if(words[index]=="")words[index]="空格";
+	ctx.fillText(words[index],10,200);
+	data = ctx.getImageData(0, 0, w, h).data;
+	i=0;
+	while(i<num){
+		while(true){
+			xx=Math.ceil(Math.random()*w)-1;
+			yy=Math.ceil(Math.random()*h)-1;
+			if(data[0+4*xx+4*w*yy]==254)break;
+		}
+		x[i]=xx;
+		y[i]=yy;
+		i++;
+	}
+}
+</script>
+
+</body>
+</html>
