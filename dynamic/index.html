@@ -10,7 +10,7 @@
 <canvas id="myCanvas" width="800" height="400" style="border:1px solid #c3c3c3;">
 Your browser does not support the canvas element.
 </canvas><br>
-<input id="word" type="text" style="width: 700px"></input>
+<input id="word" type="text" style="width: 700px"></input><br>
 <input type="button" value="begin" onclick="begin()"></input>
 <br><div id="dd">词与词之间用空格隔开哟（例：禹华东 禹华东）</div>
 <script type="text/javascript">
@@ -61,6 +61,7 @@ while(i<num){
 
 function begin(){
 	words = word.value.split(" ");
+	index=0;
 	setInterval(move, 10);
 }
 function move(){
