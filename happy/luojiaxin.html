@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>除夕快乐</title>
+
+<style type="text/css">
+@font-face {
+	font-family: digit;
+	src: url('digital-7_mono.ttf') format("truetype");
+}
+#ss{
+	position:absolute;
+	line-height: 20px;
+	font-size: 18px;
+	margin-top: 50px;
+	margin-left: 100px;
+	float: left;
+}
+</style>
+
+<link href="css/default.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/garden.js"></script>
+<script type="text/javascript" src="js/functions.js"></script>
+
+</head>
+
+<body>
+<div id = "ss">
+		 	<div>
+				<div id="total" style="color:red"></div>
+			</div>
+</div>
+<div id="mainDiv">
+	<div id="content">
+		<div id="loveHeart">
+			<canvas id="garden"></canvas>
+			<div id="words">
+				<div id="messages">
+					罗佳欣<br>祝你----------------
+				</div>
+				<div id="loveu">
+					----------------除夕快乐<br/>
+					<div class="signature">-------禹华东</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+var now = new Date();
+	var days,index=0,word1;
+		window.onload=function(){
+            var bngDate = new Date(2011,9,1);
+  			var year = now.getFullYear();
+ 			var month = now.getMonth();
+ 			var day = now.getDate();
+            var endDate =new Date(year,month,day);
+            days = (endDate.getTime()-bngDate.getTime())/24/60/60/1000;
+ 			word1="也许你不知道\n我们已经相识了"+days+"天\n转眼间\n已经大三了\n在这里祝你除夕快乐呦";
+			showtime();
+		}
+		function showtime() {
+			document.getElementById("total").innerText = word1.substring(0,index++);
+			setTimeout("showtime()",100);
+		}
+			var offsetX = $("#loveHeart").width() / 2;
+			var offsetY = $("#loveHeart").height() / 2 - 55;
+			var together = new Date();
+			together.setFullYear(2014, 10, 10);
+			together.setHours(0);
+			together.setMinutes(0);
+			together.setSeconds(0);
+			together.setMilliseconds(0);
+
+			if (!document.createElement('canvas').getContext) {
+				var msg = document.createElement("div");
+				msg.id = "errorMsg";
+				msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+"; 
+				document.body.appendChild(msg);
+				$("#code").css("display", "none")
+				$("#copyright").css("position", "absolute");
+				$("#copyright").css("bottom", "10px");
+				document.execCommand("stop");
+			} else {
+				setTimeout(function () {
+					startHeartAnimation();
+				}, 5000);
+
+				timeElapse(together);
+				setInterval(function () {
+					timeElapse(together);
+				}, 500);
+
+				adjustCodePosition();
+				$("#code").typewriter();
+			}
+
+</script>
+<div style="text-align:center;clear:both">
+</div>
+</body>
+</html>
