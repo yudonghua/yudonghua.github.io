@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>生日快乐！</title>
+<title>我是你的谁</title>
 
 <style type="text/css">
 @font-face {
@@ -38,10 +38,10 @@
 			<canvas id="garden"></canvas>
 			<div id="words">
 				<div id="messages">
-					马倩<br>祝你----------------
+					那谁<br>祝你----------------
 				</div>
 				<div id="loveu">
-					----------------除夕快乐<br/>
+					----------------喜欢上我哦<br/>
 					<div class="signature">-------禹华东</div>
 				</div>
 			</div>
@@ -53,13 +53,13 @@
 var now = new Date();
 	var days,index=0,word1;
 		window.onload=function(){
-            var bngDate = new Date(2010,1,15);
+            var bngDate = new Date(2017,1,19);
   			var year = now.getFullYear();
  			var month = now.getMonth();
  			var day = now.getDate();
             var endDate =new Date(year,month,day);
             days = (endDate.getTime()-bngDate.getTime())/24/60/60/1000;
- 			word1="也许你不知道\n我们已经相识了"+days+"天\n转眼间\n已经大三了\n在这里祝你除夕快乐呦";
+ 			word1="也许你不知道\n我们已经相识了"+days+"天\n其实\n程序员也有程序员的浪漫哦";
 			showtime();
 		}
 		function showtime() {
@@ -87,7 +87,7 @@ var now = new Date();
 			} else {
 				setTimeout(function () {
 					startHeartAnimation();
-				}, 5000);
+				}, 50);
 
 				timeElapse(together);
 				setInterval(function () {
