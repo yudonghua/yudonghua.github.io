@@ -28,15 +28,11 @@
 <body>
 <div id = "ss">
 			<form>
-				你们相识于:<input style="width: 36px;" type="text" id="year">年<input style="width: 18px;" type="text" id="month">月<input style="width: 18px;" type="text" id="day">日
-				<input type="button" onclick="ok()" value="确定">
+				亲爱的刘勤：我们相识于:2021年2月27日
 		 	</form>
 		 	<div>
 				<div id="total"></div><span id="time"></span>
 			</div>
-			<p id="Valentine" style="color:red"></p>
-			<p id="mom" style="color:red"></p>
-			<p id="qixi" style="color:red"></p>
 </div>
 <div id="mainDiv">
 	<div id="content">
@@ -59,30 +55,15 @@
 var now = new Date();
 var nowtime = now.getTime();
 var index=0;
-var Valentine= new Date(2017,2,14);
-var qixi= new Date(2017,8,28);
-var mom= new Date(2017,5,14);
-var word1="还有";
-word1+=parseInt((Valentine.getTime()-nowtime)/24/60/60/1000)+"天";
-word1+="情人节";
-var word2="还有";
-word2+=parseInt((mom.getTime()-nowtime)/24/60/60/1000)+"天";
-word2+="母亲节";
-var word3="还有";
-word3+=parseInt((qixi.getTime()-nowtime)/24/60/60/1000)+"天";
-word3+="七夕";
-function type(){
-    document.getElementById("Valentine").innerText = word1.substring(0,index++);
-    document.getElementById("mom").innerText = word2.substring(0,index);
-    document.getElementById("qixi").innerText = word3.substring(0,index);
-}
-setInterval(type, 100);
+var bngDate = new Date(2021,2,27);
+
+ok();
 	var days;
 		function ok(){
-			var year = document.getElementById('year').value;
-            var month =  document.getElementById('month').value-1;
-			var day =  document.getElementById('day').value;
-            var bngDate = new Date(year,month,day);
+// 			var year = document.getElementById('year').value;
+//             var month =  document.getElementById('month').value-1;
+// 			var day =  document.getElementById('day').value;
+//             var bngDate = new Date(year,month,day);
  			var now = new Date();
  			year = now.getFullYear();
  			month = now.getMonth();
