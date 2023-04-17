@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>你问我答</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/markdown-it@12.3.2/dist/markdown-it.min.js"></script>
+</head>
+</head>
+<body>
+  <h1>你问我答(CHAT-GPT)</h1>
+  <div id="chatbox">
+    <div id="chatlog"></div>
+    <input type="text" id="userinput" />
+    <button onclick="sendUserInput()">发送</button>
+  </div>
+  
+  <script>
+    const apiUrl = 'https://free.churchless.tech/v1/chat/completions';
+    const apiKey = ''; // 替换为你的API密钥
+    
+    let chatLog = '';
+
+    async function sendUserInput() {
+      const userInput = document.getElementById('userinput').value;
+      chatLog += `<p><strong>你：</strong> ${userInput}</p>`;
+      chatLog += `<p><strong>思考中...(大约需要20s)</strong></p>`;
+      document.getElementById('chatlog').innerHTML = chatLog;
+      document.getElementById('userinput').value = '';
+      
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer `,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          messages: [
+            { role: 'user', content: userInput +  '(用markdown格式消息回答我)'}
+          ]
+        })
+      });
+      
+      const result = await response.json();
+      const modelResponse = result.choices[0].message.content;
+      const md = window.markdownit();
+      const htmlOutput = md.render(modelResponse);
+      chatLog += htmlOutput;
+      document.getElementById('chatlog').innerHTML = chatLog;
+    }
+  </script>
+</body>
+</html>
