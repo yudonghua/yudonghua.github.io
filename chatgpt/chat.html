@@ -1,51 +1,145 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh">
 <head>
-  <title>你问我答</title>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChatGPT - 对话界面</title>
   <script src="https://cdn.jsdelivr.net/npm/markdown-it@12.3.2/dist/markdown-it.min.js"></script>
-</head>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f0f0f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    .chat-container {
+      width: 80%;
+      max-width: 800px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.16);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .chat-content {
+      flex-grow: 1;
+      overflow-y: auto;
+      max-height: 400px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding-bottom: 10px;
+      height: 400px;
+    }
+
+    .message {
+      padding: 10px;
+      border-radius: 5px;
+    }
+
+    .user-message {
+      background-color: #e0e0e0;
+      align-self: flex-end;
+      max-width: 70%;
+    }
+
+    .gpt-message {
+      background-color: #0077ff;
+      color: white;
+      align-self: flex-start;
+      max-width: 70%;
+    }
+
+    form {
+      display: flex;
+      gap: 10px;
+    }
+
+    textarea {
+      flex-grow: 1;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      wrap: hard;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin-left: 10px;
+      border: none;
+      border-radius: 5px;
+      background-color: #4CAF50;
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+  </style>
 </head>
 <body>
-  <h1>你问我答(CHAT-GPT)</h1>
-  <div id="chatbox">
-    <div id="chatlog"></div>
-    <input type="text" id="userinput" />
-    <button onclick="sendUserInput()">发送</button>
+  <div class="chat-container">
+    <div class="chat-content" id="chat-content">
+      <!-- 对话内容将在此显示 -->
+    </div>
+    <form id="chat-form">
+          <textarea id="user-input" placeholder="输入您的问题..."></textarea>
+          <button type="submit">发送</button>
+    </form>
   </div>
-  
-  <script>
-    const apiUrl = 'http://120.55.71.185/v1/chat/completions';
-    const apiKey = ''; // 替换为你的API密钥
-    
-    let chatLog = '';
 
-    async function sendUserInput() {
-      const userInput = document.getElementById('userinput').value;
-      chatLog += `<p><strong>你：</strong> ${userInput}</p>`;
-      chatLog += `<p><strong>思考中...(大约需要20s)</strong></p>`;
-      document.getElementById('chatlog').innerHTML = chatLog;
-      document.getElementById('userinput').value = '';
-      
+  <script>
+    const chatContent = document.getElementById('chat-content');
+    const chatForm = document.getElementById('chat-form');
+    const userInput = document.getElementById('user-input');
+
+    chatForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      const message = userInput.value.trim();
+      if (message) {
+        appendMessage(message, 'user-message');
+        userInput.value = '';
+
+        // 调用ChatGPT API并显示回复
+        const gptResponse = await fetchChatGPTResponse(message);
+        appendMessage(gptResponse, 'gpt-message');
+      }
+    });
+
+    function appendMessage(text, className) {
+      const messageEl = document.createElement('div');
+      messageEl.innerHTML = text;
+      messageEl.classList.add('message', className);
+      chatContent.appendChild(messageEl);
+      chatContent.scrollTop = chatContent.scrollHeight;
+    }
+
+    async function fetchChatGPTResponse(message) {
+      const apiUrl = 'https://free.churchless.tech/v1/chat/completions';
+      const apiKey = ''; // 替换为你的API密钥
       const response = await fetch(apiUrl, {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer `,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          messages: [
-            { role: 'user', content: userInput +  '(用markdown格式消息回答我)'}
-          ]
-        })
-      });
-      
-      const result = await response.json();
-      const modelResponse = result.choices[0].message.content;
-      const md = window.markdownit();
-      const htmlOutput = md.render(modelResponse);
-      chatLog += htmlOutput;
-      document.getElementById('chatlog').innerHTML = chatLog;
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer `,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            messages: [
+              { role: 'user', content: message}
+            ],
+            model: "gpt-3.5-turbo"
+          })
+        });
+       const result = await response.json();
+        const modelResponse = result.choices[0].message.content;
+        const md = window.markdownit();
+        return md.render(modelResponse);
     }
   </script>
 </body>
