@@ -17,8 +17,7 @@
     }
 
     .chat-container {
-      width: 80%;
-      max-width: 800px;
+      width: 100%;
       background-color: white;
       border-radius: 10px;
       box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.16);
@@ -30,12 +29,11 @@
     .chat-content {
       flex-grow: 1;
       overflow-y: auto;
-      max-height: 400px;
       display: flex;
       flex-direction: column;
       gap: 10px;
       padding-bottom: 10px;
-      height: 400px;
+      height: calc(100vh - 120px);
     }
 
     .message {
@@ -122,7 +120,7 @@
       messageEl.classList.add('message', className);
       chatContent.appendChild(messageEl);
       chatContent.scrollTop = chatContent.scrollHeight;
-    }
+    };
 
     async function fetchChatGPTResponse(message) {
       const apiUrl = 'https://free.churchless.tech/v1/chat/completions';
