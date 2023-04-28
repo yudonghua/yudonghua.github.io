@@ -110,8 +110,8 @@
         // 调用ChatGPT API并显示回复
         const gptResponse = await fetchChatGPTResponse(message);
         appendMessage(gptResponse, 'gpt-message');
-        if(i++ == 1){
-          appendMessage('维护不易打个赏<br><img src="./collect.png" width="100" height="100"/>', 'gpt-message');
+        if(i++%10 == 1){
+          appendMessage('维护不易打个赏<br><img src="./collect.jpg" width="100" height="100"/>', 'gpt-message');
         }
       }
     });
